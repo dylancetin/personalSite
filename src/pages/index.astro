@@ -1,0 +1,62 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { PixelartHero } from "@/components/home/hero";
+---
+
+<Layout title="Taylan Çetin">
+  <main class="space-y-8">
+    <h1 class="text-center">hi</h1>
+    <div class="mb-8 min-h-[250px]">
+      <PixelartHero client:load />
+    </div>
+
+    <h2 class="text-start text-xl italic font-bold">some work i have done</h2>
+    <ul class="list-disc pl-6">
+      <li>
+        I'm a Full Stack Developer at
+        <a href="baykusmentorluk.com" class="italic underline"
+          >Baykus Mentorluk</a
+        >, leading various projects for two years
+      </li>
+      <li>
+        Co-founder and CTO of (3 person)
+        <a href="akord.agency" class="italic underline">Akord Agency</a>
+      </li>
+      <li>
+        Was Team Captain for Kel42 - an electric vehicle team - and Electronics
+        Team Lead for KelRot FRC Team
+      </li>
+      <li>Bass Guitarist for Amorf</li>
+      <li>
+        For fun organized TedX Kabatas and managed some Entrepreneurship
+        Education Conferences in school
+      </li>
+    </ul>
+  </main>
+</Layout>
+
+<style>
+  main {
+    margin: auto;
+    padding: 1rem;
+    width: 800px;
+    max-width: calc(100% - 2rem);
+    color: white;
+    font-size: 20px;
+    line-height: 1.6;
+  }
+  h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 1em;
+  }
+  h5 {
+    text-align: center;
+  }
+  #cizgiler {
+    width: 100%;
+    height: 100%;
+  }
+</style>
