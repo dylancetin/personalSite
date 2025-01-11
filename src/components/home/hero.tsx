@@ -7,7 +7,7 @@ import {
 export const PixelartHero = () => (
   <Tooltip openDelay={100}>
     <TooltipTrigger>
-      <div class="mx-auto max-w-[750px] w-2/3 rounded-3xl overflow-hidden">
+      <div class="mx-auto max-w-[750px] w-full sm:w-2/3 rounded-3xl overflow-hidden">
         <img
           id="pixelart"
           src="/pixelartme.webp"
