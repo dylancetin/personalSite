@@ -10,4 +10,11 @@ export default defineConfig({
   site: "https://taylan.co",
   adapter: cloudflare(),
   integrations: [react()],
+  vite: {
+    resolve: {
+      alias: import.meta.env.PROD && {
+        "react-dom/server": "react-dom/server.edge",
+      },
+    },
+  },
 });
