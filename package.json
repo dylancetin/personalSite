@@ -11,24 +11,24 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",
-    "@astrojs/cloudflare": "^12.2.4",
-    "@astrojs/solid-js": "^5.0.5",
-    "@astrojs/tailwind": "^6.0.0",
-    "@kobalte/core": "^0.13.7",
-    "astro": "^5.5.3",
-    "class-variance-authority": "^0.7.0",
+    "@astrojs/cloudflare": "^12.6.2",
+    "@astrojs/solid-js": "^5.1.0",
+    "@kobalte/core": "^0.13.11",
+    "astro": "^5.12.8",
+    "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "particles.js": "^2.0.0",
-    "solid-js": "^1.9.3",
+    "solid-js": "^1.9.7",
     "solid-motionone": "^1.0.4",
-    "tailwind-merge": "^2.5.4",
+    "tailwind-merge": "^3.3.1",
     "tailwindcss": "^4.1.11",
     "tailwindcss-animate": "^1.0.7",
     "taos": "^1.0.5",
-    "typescript": "^5.4.5"
+    "typescript": "^5.9.2"
   },
   "devDependencies": {
-    "prettier": "^3.3.3",
+    "@tailwindcss/postcss": "^4.1.11",
+    "prettier": "^3.6.2",
     "prettier-plugin-astro": "^0.14.1"
   }
 }
