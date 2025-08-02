@@ -20,6 +20,7 @@
     "clsx": "^2.1.1",
     "particles.js": "^2.0.0",
     "solid-js": "^1.9.3",
+    "solid-motionone": "^1.0.4",
     "tailwind-merge": "^2.5.4",
     "tailwindcss": "^3.4.3",
     "tailwindcss-animate": "^1.0.7",

@@ -5,37 +5,34 @@ import { PixelartHero } from "@/components/home/hero";
 
 <Layout title="Taylan Çetin">
   <main class="space-y-8">
-    <h1 class="hidden">taylan çetin</h1>
-    <div class="mb-8 sm:min-h-[250px]">
-      <PixelartHero client:load />
-    </div>
+    <div class="space-y-8 w-[800px] mx-auto">
+      <h1 class="hidden">taylan çetin</h1>
+      <div class="mb-8 sm:min-h-[250px]">
+        <PixelartHero client:load />
+      </div>
 
-    <h2 class="text-start text-xl italic font-bold">some work from me</h2>
-    <ul class="list-disc pl-6">
-      <li>
-        Smashing keyboard @
-        <a
-          href="https://baykusmentorluk.com"
-          class="italic underline text-flexoki-blue-200">Baykus Mentorluk</a
-        >
-      </li>
-      <li>
-        Co-founder and CTO of (3 distinguished fella)
-        <a
-          href="https://akord.agency"
-          class="italic underline text-flexoki-blue-200">Akord Agency</a
-        >
-      </li>
-      <li>
-        Was Team Captain for Kel42 - an electric vehicle team - and Electronics
-        Team Lead for KelRot FRC Team
-      </li>
-      <li>Bass Guitarist for Amorf</li>
-      <li>
-        Organized TedX Kabatas and managed some Entrepreneurship Education
-        Conferences in school for fun
-      </li>
-    </ul>
+      <h2 class="text-start text-xl italic font-bold">some work from me</h2>
+      <ul class="list-disc pl-6">
+        <li>
+          Co-founder and CTO of (3 distinguished fella)
+          <a
+            href="https://akord.agency"
+            class="italic underline text-flexoki-blue-200">Akord Agency</a
+          >
+        </li>
+        <li>
+          Was Team Captain for Kel42 - an electric vehicle team - and
+          Electronics Team Lead for KelRot FRC Team
+        </li>
+        <li>Bass Guitarist for Amorf</li>
+        <li>
+          Organized TedX Kabatas and managed some Entrepreneurship Education
+          Conferences in school for fun
+        </li>
+      </ul>
+    </div>
+    <!-- <div class="mt-12 w-full"> -->
+    <!-- </div> -->
   </main>
 </Layout>
 
@@ -43,7 +40,6 @@ import { PixelartHero } from "@/components/home/hero";
   main {
     margin: auto;
     padding: 1rem;
-    width: 800px;
     max-width: calc(100% - 2rem);
     color: white;
     font-size: 20px;
