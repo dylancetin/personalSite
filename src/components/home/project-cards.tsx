@@ -61,9 +61,8 @@ function Card({
     >
       <div className="w-full h-100 sm:h-80 md:h-120 relative block pointer-events-none">
         <motion.div
-          className="relative w-full h-full mx-auto rounded-lg bg-flexoki-base-50 overflow-hidden pointer-events-auto"
+          className="relative w-full h-full mx-auto rounded-lg overflow-hidden pointer-events-auto"
           layoutId={`card-container-${id}`}
-          style={{ visibility: activeId === id ? "hidden" : "visible" }}
         >
           <motion.div
             className="absolute top-0 left-0 max-w-none w-[calc(100vw-2rem)]"
