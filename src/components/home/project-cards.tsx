@@ -151,7 +151,7 @@ export function CardDialog({
 const projects = [
   {
     title: "Kullanışlı Bir Admin Paneli",
-    photo: "/images/admin-panel-generic.png",
+    photo: "/images/admin-panel-generic.webp",
     content: () => {
       return (
         <div>
@@ -164,7 +164,7 @@ const projects = [
   {
     title: "Hızlı Video Çözüm",
     url: "https://video.taylan.co",
-    photo: "/images/hizli-cozum.png",
+    photo: "/images/hizli-cozum.webp",
     content: () => {
       return (
         <div>
@@ -178,7 +178,7 @@ const projects = [
   {
     title: "PDF-Anki",
     url: "https://anki.taylan.co",
-    photo: "/images/pdf-anki.png",
+    photo: "/images/pdf-anki.webp",
     content: () => {
       return (
         <div>
