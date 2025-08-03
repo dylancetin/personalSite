@@ -53,7 +53,7 @@ export function DialogContentWithoutAnimation({
   showCloseButton?: boolean;
 }) {
   return (
-    <DialogPortal data-slot="dialog-portal">
+    <>
       <DialogOverlay />
       <DialogPrimitive.Content
         data-slot="dialog-content"
@@ -65,7 +65,7 @@ export function DialogContentWithoutAnimation({
       >
         {children}
       </DialogPrimitive.Content>
-    </DialogPortal>
+    </>
   );
 }
 

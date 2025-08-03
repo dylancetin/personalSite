@@ -1,26 +1,33 @@
 import { AnimatePresence } from "motion/react";
-
 import React, { useState } from "react";
-import { motion } from "motion/react";
+import { motion, MotionConfig } from "motion/react";
+import { ScrollArea, ScrollBar } from "../ui/scroll-area";
+import { Button } from "../ui/button";
+import { ExpandIcon, LinkIcon, ShrinkIcon, XIcon } from "lucide-react";
 import {
   Dialog,
   DialogContentWithoutAnimation,
   DialogTitle,
 } from "../ui/dialog";
-import { ScrollArea, ScrollBar } from "../ui/scroll-area";
-import { Button } from "../ui/button";
-import { ExpandIcon, LinkIcon, ShrinkIcon, XIcon } from "lucide-react";
 
 export function ProjectCards() {
   const [activeId, setActiveId] = useState<number | undefined>();
   return (
-    <>
-      <AnimatePresence mode="popLayout">
+    <MotionConfig
+      transition={{
+        type: "tween",
+        duration: 0.3,
+        // duration: 5,
+        ease: [0.16, 1, 0.3, 1],
+      }}
+    >
+      <AnimatePresence>
         <div className="flex flex-wrap flex-col sm:flex-row">
           {projects.map((e, i) => (
             <Card
               key={`card-${i}`}
               id={i}
+              activeId={activeId}
               setActiveId={setActiveId}
               project={e}
             />
@@ -30,45 +37,44 @@ export function ProjectCards() {
           <CardDialog activeId={activeId} setActiveId={setActiveId} />
         ) : null}
       </AnimatePresence>
-    </>
+    </MotionConfig>
   );
 }
 
 function Card({
   project,
   id,
+  activeId,
   setActiveId,
 }: {
   project: (typeof projects)[number];
   id: number;
+  activeId?: number;
   setActiveId: React.Dispatch<React.SetStateAction<number | undefined>>;
 }) {
   return (
     <div
-      className={`rounded-lg relative overflow-hidden p-2 w-full ${["flex-1 sm:flex-1/3", "flex-1 sm:flex-1/2", "flex-1 sm:flex-1/3"][id]}`}
+      className={`rounded-lg relative overflow-hidden p-2 w-full ${
+        ["flex-1 sm:flex-1/3", "flex-1 sm:flex-1/2", "flex-1 sm:flex-1/3"][id]
+      }`}
       onClick={() => setActiveId(id)}
     >
       <div className="w-full h-100 sm:h-80 md:h-120 relative block pointer-events-none">
         <motion.div
           className="relative w-full h-full mx-auto rounded-lg bg-flexoki-base-50 overflow-hidden pointer-events-auto"
           layoutId={`card-container-${id}`}
+          style={{ visibility: activeId === id ? "hidden" : "visible" }}
         >
           <motion.div
-            className="absolute top-0 left-0 inset-0 overflow-hidden"
+            className="absolute top-0 left-0 max-w-none w-[calc(100vw-2rem)]"
             layoutId={`card-image-container-${id}`}
           >
             <img
-              className="w-full h-full object-cover object-top-left z-50"
+              className="h-full object-cover object-top-left z-50 max-w-none w-[calc(100vw-2rem)]"
               src={project.photo}
               alt=""
             />
           </motion.div>
-          {/* <motion.div */}
-          {/*   className="absolute top-[15px] left-[15px] max-w-[300px]" */}
-          {/*   layoutId={`title-container-${id}`} */}
-          {/* > */}
-          {/*   <h2 className="text-flexoki-base-900 my-2">{project.title}</h2> */}
-          {/* </motion.div> */}
         </motion.div>
       </div>
     </div>
@@ -90,27 +96,59 @@ export function CardDialog({
         <motion.div
           layout
           className="absolute top-3 right-3 h-12 z-50 flex gap-2 justify-end"
-          initial={{ scale: 0 }}
-          animate={{ scale: 1 }}
-          transition={{ duration: 0.2, delay: 0.3 }}
+          transition={{ duration: 0.3, delay: 0.3 }}
         >
-          <Button size={"icon"} onClick={() => setScaleImage(!scaleImage)}>
-            {!scaleImage ? (
-              <ExpandIcon className="size-4 text-flexoki-base-50" />
-            ) : (
-              <ShrinkIcon className="size-4 text-flexoki-base-50" />
-            )}
+          <Button
+            size={"icon"}
+            onClick={() => setScaleImage(!scaleImage)}
+            asChild
+          >
+            <motion.button
+              initial={{
+                scale: 0,
+              }}
+              animate={{
+                scale: 1,
+              }}
+              transition={{ delay: 0.3 }}
+            >
+              {!scaleImage ? (
+                <ExpandIcon className="size-4 text-flexoki-base-50" />
+              ) : (
+                <ShrinkIcon className="size-4 text-flexoki-base-50" />
+              )}
+            </motion.button>
+          </Button>
+          <Button size={"icon"} onClick={() => setActiveId(undefined)} asChild>
+            <motion.button
+              initial={{
+                scale: 0,
+              }}
+              animate={{
+                scale: 1,
+              }}
+              transition={{ delay: 0.35 }}
+            >
+              <XIcon className="size-5 text-flexoki-base-50" />
+            </motion.button>
           </Button>
           {activeProject.url && (
             <Button size={"icon"} asChild>
-              <a href={activeProject.url} target="_blank">
+              <motion.a
+                href={activeProject.url}
+                target="_blank"
+                initial={{
+                  scale: 0,
+                }}
+                animate={{
+                  scale: 1,
+                }}
+                transition={{ delay: 0.4 }}
+              >
                 <LinkIcon className="size-4 text-flexoki-base-50" />
-              </a>
+              </motion.a>
             </Button>
           )}
-          <Button size={"icon"} onClick={() => setActiveId(undefined)}>
-            <XIcon className="size-5 text-flexoki-base-50" />
-          </Button>
         </motion.div>
         <ScrollArea className="max-h-[calc(100vh-128px)]">
           <DialogTitle hidden>{activeProject.title}</DialogTitle>
@@ -119,7 +157,9 @@ export function CardDialog({
             layoutId={`card-container-${activeId}`}
           >
             <motion.div
-              className={`w-full ${!scaleImage ? "h-145" : "h-fit"} overflow-hidden`}
+              className={`w-full ${
+                !scaleImage ? "h-100 sm:h-80 md:h-120" : "h-fit"
+              } overflow-hidden`}
               layoutId={`card-image-container-${activeId}`}
             >
               <img
@@ -128,14 +168,6 @@ export function CardDialog({
                 alt=""
               />
             </motion.div>
-
-            {/* <motion.div */}
-            {/*   className="absolute top-[15px] left-[15px] max-w-[300px]" */}
-            {/*   layoutId={`title-container-${activeId}`} */}
-            {/* > */}
-            {/*   <h2 className="text-white my-2">{activeProject.title}</h2> */}
-            {/* </motion.div> */}
-
             <motion.div className="pt-2 px-[35px] pb-[35px] max-w-[700px] w-[90vw] space-y-4">
               <h3 className="font-semibold text-2xl">{activeProject.title}</h3>
               <activeProject.content />
