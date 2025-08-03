@@ -16,8 +16,8 @@ export function ProjectCards() {
     <MotionConfig
       transition={{
         type: "tween",
-        duration: 0.3,
-        // duration: 5,
+        duration: 0.4,
+        // duration: 50,
         ease: [0.16, 1, 0.3, 1],
       }}
     >
@@ -70,7 +70,7 @@ function Card({
             layoutId={`card-image-container-${id}`}
           >
             <img
-              className="h-full object-cover object-top-left z-50 max-w-none w-[calc(100vw-2rem)]"
+              className="object-cover object-top-left z-50 max-w-none w-[calc(100vw-2rem)] h-100 sm:h-80 md:h-120"
               src={project.photo}
               alt=""
             />
@@ -150,12 +150,12 @@ export function CardDialog({
             </Button>
           )}
         </motion.div>
-        <ScrollArea className="max-h-[calc(100vh-128px)]">
-          <DialogTitle hidden>{activeProject.title}</DialogTitle>
-          <motion.div
-            className="relative w-full h-full mx-auto rounded-lg bg-flexoki-base-50 overflow-hidden pointer-events-auto"
-            layoutId={`card-container-${activeId}`}
-          >
+        <motion.div
+          className="relative w-full h-full mx-auto rounded-lg bg-flexoki-base-50 overflow-hidden pointer-events-auto"
+          layoutId={`card-container-${activeId}`}
+        >
+          <ScrollArea className="max-h-[calc(100vh-128px)]">
+            <DialogTitle hidden>{activeProject.title}</DialogTitle>
             <motion.div
               className={`w-full ${
                 !scaleImage ? "h-100 sm:h-80 md:h-120" : "h-fit"
@@ -163,7 +163,7 @@ export function CardDialog({
               layoutId={`card-image-container-${activeId}`}
             >
               <img
-                className="w-full h-full object-cover object-top-left"
+                className="object-cover object-top-left z-50 max-w-none w-[calc(100vw-2rem)] h-100 sm:h-80 md:h-120"
                 src={activeProject.photo}
                 alt=""
               />
@@ -172,9 +172,9 @@ export function CardDialog({
               <h3 className="font-semibold text-2xl">{activeProject.title}</h3>
               <activeProject.content />
             </motion.div>
-          </motion.div>
-          <ScrollBar orientation="vertical" />
-        </ScrollArea>
+            <ScrollBar orientation="vertical" />
+          </ScrollArea>
+        </motion.div>
       </DialogContentWithoutAnimation>
     </Dialog>
   );
