@@ -54,7 +54,14 @@ function Card({
   return (
     <div
       className={`p-2 w-full ${
-        ["flex-1 sm:flex-1/3", "flex-1 sm:flex-1/2", "flex-1 sm:flex-1/3"][id]
+        [
+          "flex-1 sm:flex-1/3",
+          "flex-1 sm:flex-2/3",
+          "flex-1 sm:flex-2/3",
+          "flex-1 sm:flex-1/3",
+          "flex-1 sm:flex-1/2",
+          "flex-1 sm:flex-1/2",
+        ][id]
       }`}
       onClick={() => setActiveId(id)}
     >
@@ -216,6 +223,35 @@ const projects = [
           anki kartları oluşturmanız için bir araç
         </div>
       );
+    },
+  },
+  {
+    title: "Sınav App",
+    photo: "/images/sinav-app.webp",
+    content: () => {
+      return (
+        <div>
+          Temelde YKS öğrencileri için tasarlanmış soru çözüm, takip, seviye
+          tespit ve rapor sistemi. Kompleks PDF oluşturma mekanizmaları ile
+          beraber
+        </div>
+      );
+    },
+  },
+  {
+    title: "Akord Agency",
+    url: "https://akordagency.com",
+    photo: "/images/akord-homepage.webp",
+    content: () => {
+      return <div>Sosyal medya ve web hizmetleri ajansımız</div>;
+    },
+  },
+  {
+    title: "MarmarİSG",
+    url: "https://marmarisg.com",
+    photo: "/images/marmarisg.webp",
+    content: () => {
+      return <div>Marmaris İş Güvenliği Eğitim ve Danışmanlık</div>;
     },
   },
 ];
