@@ -16,7 +16,7 @@ export function ProjectCards() {
     <MotionConfig
       transition={{
         type: "tween",
-        duration: 0.4,
+        duration: 0.45,
         // duration: 50,
         ease: [0.16, 1, 0.3, 1],
       }}
