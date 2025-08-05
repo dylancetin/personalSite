@@ -17,7 +17,6 @@ export function ProjectCards() {
       transition={{
         type: "tween",
         duration: 0.45,
-        // duration: 50,
         ease: [0.16, 1, 0.3, 1],
       }}
     >
@@ -54,7 +53,7 @@ function Card({
 }) {
   return (
     <div
-      className={`rounded-lg relative overflow-hidden p-2 w-full ${
+      className={`p-2 w-full ${
         ["flex-1 sm:flex-1/3", "flex-1 sm:flex-1/2", "flex-1 sm:flex-1/3"][id]
       }`}
       onClick={() => setActiveId(id)}
