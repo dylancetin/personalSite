@@ -9,6 +9,7 @@ import {
   DialogContentWithoutAnimation,
   DialogTitle,
 } from "../ui/dialog";
+import { getLocale } from "@/lib/utils";
 
 export function ProjectCards() {
   const [activeId, setActiveId] = useState<number | undefined>();
@@ -26,7 +27,6 @@ export function ProjectCards() {
             <Card
               key={`card-${i}`}
               id={i}
-              activeId={activeId}
               setActiveId={setActiveId}
               project={e}
             />
@@ -43,12 +43,10 @@ export function ProjectCards() {
 function Card({
   project,
   id,
-  activeId,
   setActiveId,
 }: {
   project: (typeof projects)[number];
   id: number;
-  activeId?: number;
   setActiveId: React.Dispatch<React.SetStateAction<number | undefined>>;
 }) {
   return (
@@ -95,6 +93,8 @@ export function CardDialog({
 }) {
   const [scaleImage, setScaleImage] = useState(false);
   const activeProject = projects[activeId];
+  const locale = getLocale();
+
   return (
     <Dialog open onOpenChange={() => setActiveId(undefined)}>
       <DialogContentWithoutAnimation className="w-full min-h-160 p-0 bg-transparent border-none focus-visible:outline-none text-black rounded-lg overflow-hidden">
@@ -160,7 +160,7 @@ export function CardDialog({
           layoutId={`card-container-${activeId}`}
         >
           <ScrollArea className="max-h-[calc(100vh-128px)]">
-            <DialogTitle hidden>{activeProject.title}</DialogTitle>
+            <DialogTitle hidden>{activeProject[locale].title}</DialogTitle>
             <motion.div
               className={`w-full ${
                 !scaleImage ? "h-100 sm:h-80 md:h-120" : "h-fit"
@@ -174,8 +174,10 @@ export function CardDialog({
               />
             </motion.div>
             <motion.div className="pt-2 px-[35px] pb-[35px] max-w-[700px] w-[90vw] space-y-4">
-              <h3 className="font-semibold text-2xl">{activeProject.title}</h3>
-              <activeProject.content />
+              <h3 className="font-semibold text-2xl">
+                {activeProject[locale].title}
+              </h3>
+              {activeProject[locale].content()}
             </motion.div>
             <ScrollBar orientation="vertical" />
           </ScrollArea>
@@ -185,73 +187,156 @@ export function CardDialog({
   );
 }
 
-const projects = [
+const projects: {
+  en: {
+    title: string;
+    content: () => React.ReactNode;
+  };
+  tr: {
+    title: string;
+    content: () => React.ReactNode;
+  };
+  photo: string;
+  url?: string;
+}[] = [
   {
-    title: "Kullanışlı Bir Admin Paneli",
-    photo: "/images/admin-panel-generic.webp",
-    content: () => {
-      return (
-        <div>
-          Pek çok amaç için kullanılabilecek bir internal-tool, backoffice,
-          admin paneli örneği
-        </div>
-      );
+    en: {
+      title: "Useful Admin Panel",
+      content: () => {
+        return (
+          <div>
+            An internal‑tool, back‑office, admin‑panel example that can be used
+            for many purposes.
+          </div>
+        );
+      },
     },
+    tr: {
+      title: "Kullanışlı Bir Admin Paneli",
+      content: () => {
+        return (
+          <div>
+            Pek çok amaç için kullanılabilecek bir internal‑tool, backoffice,
+            admin paneli örneği
+          </div>
+        );
+      },
+    },
+    photo: "/images/admin-panel-generic.webp",
   },
   {
-    title: "Hızlı Video Çözüm",
+    en: {
+      title: "Fast Video Solution",
+      content: () => {
+        return (
+          <div>
+            A comment on the FRNS.IN page that many users of Turkish exam
+            preparation content encounter. A version that adds many features I
+            felt were missing.
+          </div>
+        );
+      },
+    },
+    tr: {
+      title: "Hızlı Video Çözüm",
+      content: () => {
+        return (
+          <div>
+            Türkiye sınav hazırlık içeriği tüketen çoğu kişinin karşılaştığı
+            FRNS.IN sayfasının bir yorumu. Eksik olduğunu düşündüğüm pek çok
+            özelliğin eklenmiş versiyonu
+          </div>
+        );
+      },
+    },
     url: "https://video.taylan.co",
     photo: "/images/hizli-cozum.webp",
-    content: () => {
-      return (
-        <div>
-          Türkiye sınav hazırlık içeriği tüketen çoğu kişinin karşılaştığı
-          FRNS.IN sayfasının bir yorumu. Eksik olduğunu düşündüğüm pek çok
-          özelliğin eklenmiş versiyonu
-        </div>
-      );
-    },
   },
   {
-    title: "PDF-Anki",
+    en: {
+      title: "PDF‑Anki",
+      content: () => {
+        return (
+          <div>
+            A tool that creates Anki cards from your PDF files quickly, with AI
+            assistance.
+          </div>
+        );
+      },
+    },
+    tr: {
+      title: "PDF-Anki",
+      content: () => {
+        return (
+          <div>
+            Elinizde bulunan PDF dosyaları üzerinden hızlıca yapay zeka
+            desteğiyle anki kartları oluşturmanız için bir araç
+          </div>
+        );
+      },
+    },
     url: "https://anki.taylan.co",
     photo: "/images/pdf-anki.webp",
-    content: () => {
-      return (
-        <div>
-          Elinizde bulunan PDF dosyaları üzerinden hızlıca yapay zeka desteğiyle
-          anki kartları oluşturmanız için bir araç
-        </div>
-      );
-    },
   },
   {
-    title: "Sınav App",
+    en: {
+      title: "Exam App",
+      content: () => {
+        return (
+          <div>
+            A question‑solving, tracking, level‑detection and reporting system
+            designed for YKS students, together with complex PDF‑generation
+            mechanisms.
+          </div>
+        );
+      },
+    },
+    tr: {
+      title: "Sınav App",
+      content: () => {
+        return (
+          <div>
+            Temelde YKS öğrencileri için tasarlanmış soru çözüm, takip, seviye
+            tespit ve rapor sistemi. Kompleks PDF oluşturma mekanizmaları ile
+            beraber
+          </div>
+        );
+      },
+    },
     photo: "/images/sinav-app.webp",
-    content: () => {
-      return (
-        <div>
-          Temelde YKS öğrencileri için tasarlanmış soru çözüm, takip, seviye
-          tespit ve rapor sistemi. Kompleks PDF oluşturma mekanizmaları ile
-          beraber
-        </div>
-      );
-    },
   },
   {
-    title: "Akord Agency",
+    en: {
+      title: "Akord Agency",
+      content: () => {
+        return <div>Our social‑media and web‑services agency.</div>;
+      },
+    },
+    tr: {
+      title: "Akord Agency",
+      content: () => {
+        return <div>Sosyal medya ve web hizmetleri ajansımız</div>;
+      },
+    },
     url: "https://akordagency.com",
     photo: "/images/akord-homepage.webp",
-    content: () => {
-      return <div>Sosyal medya ve web hizmetleri ajansımız</div>;
-    },
   },
   {
-    title: "MarmarİSG",
+    en: {
+      title: "MarmarİSG",
+      content: () => {
+        return (
+          <div>Marmaris Occupational Safety Training and Consultancy.</div>
+        );
+      },
+    },
+    tr: {
+      title: "MarmarİSG",
+      content: () => {
+        return <div>Marmaris İş Güvenliği Eğitim ve Danışmanlık</div>;
+      },
+    },
     url: "https://marmarisg.com",
     photo: "/images/marmarisg.webp",
-    content: () => {
-      return <div>Marmaris İş Güvenliği Eğitim ve Danışmanlık</div>;
-    },
   },
 ];
