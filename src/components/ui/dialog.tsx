@@ -54,7 +54,7 @@ export function DialogContentWithoutAnimation({
 }) {
   return (
     <>
-      <DialogOverlay className="z-10 duration-200" />
+      <DialogOverlay className="z-10 duration-200 delay-100" />
       <DialogPrimitive.Content
         data-slot="dialog-content"
         className={cn(
