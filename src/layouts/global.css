@@ -410,4 +410,40 @@
 		font-size: 20px;
 		line-height: 1.6;
 	}
+
+	[data-slot="dialog-overlay"] {
+		transition-duration: 200ms;
+		transition-delay: 300ms;
+	}
+
+	/* State: open */
+	[data-slot="dialog-overlay"][data-state="open"] {
+		opacity: 0;
+		animation: fadeIn 200ms ease-in-out forwards;
+	}
+
+	/* State: closed */
+	[data-slot="dialog-overlay"][data-state="closed"] {
+		opacity: 1;
+		animation: fadeOut 200ms ease-in-out forwards;
+	}
+
+	/* Example keyframes */
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+		}
+		to {
+			opacity: 1;
+		}
+	}
+
+	@keyframes fadeOut {
+		from {
+			opacity: 1;
+		}
+		to {
+			opacity: 0;
+		}
+	}
 }
