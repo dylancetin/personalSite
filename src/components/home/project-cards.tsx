@@ -51,7 +51,7 @@ function Card({
 }) {
   return (
     <div
-      className={`p-2 w-full ${
+      className={`p-0 py-2 sm:p-2 w-full ${
         [
           "flex-1 sm:flex-1/3",
           "flex-1 sm:flex-2/3",
