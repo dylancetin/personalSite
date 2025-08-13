@@ -73,7 +73,7 @@ function Card({
             layoutId={`card-image-container-${id}`}
           >
             <img
-              className="object-cover object-top-left z-50 max-w-none w-[calc(100vw-2rem)] h-100 sm:h-80 md:h-120"
+              className="object-cover object-top-left z-50 max-w-none w-[calc(100vw-2rem)] h-100 sm:h-80 md:h-120 bg-white"
               src={project.photo}
               alt=""
             />
