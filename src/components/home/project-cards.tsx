@@ -124,19 +124,6 @@ export function CardDialog({
               )}
             </motion.button>
           </Button>
-          <Button size={"icon"} onClick={() => setActiveId(undefined)} asChild>
-            <motion.button
-              initial={{
-                scale: 0,
-              }}
-              animate={{
-                scale: 1,
-              }}
-              transition={{ delay: 0.35 }}
-            >
-              <XIcon className="size-5 text-flexoki-base-50" />
-            </motion.button>
-          </Button>
           {activeProject.url && (
             <Button size={"icon"} asChild>
               <motion.a
@@ -148,12 +135,25 @@ export function CardDialog({
                 animate={{
                   scale: 1,
                 }}
-                transition={{ delay: 0.4 }}
+                transition={{ delay: 0.35 }}
               >
                 <LinkIcon className="size-4 text-flexoki-base-50" />
               </motion.a>
             </Button>
           )}
+          <Button size={"icon"} onClick={() => setActiveId(undefined)} asChild>
+            <motion.button
+              initial={{
+                scale: 0,
+              }}
+              animate={{
+                scale: 1,
+              }}
+              transition={{ delay: 0.4 }}
+            >
+              <XIcon className="size-5 text-flexoki-base-50" />
+            </motion.button>
+          </Button>
         </motion.div>
         <motion.div
           className="relative w-full h-full mx-auto rounded-lg bg-flexoki-base-50 overflow-hidden pointer-events-auto"
