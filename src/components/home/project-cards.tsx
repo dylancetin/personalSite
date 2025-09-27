@@ -115,7 +115,7 @@ export function CardDialog({
               animate={{
                 scale: 1,
               }}
-              transition={{ delay: 0.3 }}
+              transition={{ delay: 0.4 }}
             >
               {!scaleImage ? (
                 <ExpandIcon className="size-4 text-flexoki-base-50" />
@@ -149,7 +149,7 @@ export function CardDialog({
               animate={{
                 scale: 1,
               }}
-              transition={{ delay: 0.4 }}
+              transition={{ delay: 0.3 }}
             >
               <XIcon className="size-5 text-flexoki-base-50" />
             </motion.button>
