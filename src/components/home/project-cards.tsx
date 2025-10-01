@@ -159,7 +159,7 @@ export function CardDialog({
           className="relative w-full h-full mx-auto rounded-lg bg-flexoki-base-50 overflow-hidden pointer-events-auto"
           layoutId={`card-container-${activeId}`}
         >
-          <ScrollArea className="max-h-[calc(100vh-128px)]">
+          <ScrollArea className="h-full max-h-[calc(100vh-128px)]">
             <DialogTitle hidden>{activeProject[locale].title}</DialogTitle>
             <motion.div
               className={`w-full ${
@@ -230,9 +230,9 @@ const projects: {
       content: () => {
         return (
           <div>
-            A comment on the FRNS.IN page that many users of Turkish exam
-            preparation content encounter. A version that adds many features I
-            felt were missing.
+            My personal (kinda like an revenge of the bad UX original gives) on
+            the FRNS.IN page that many users of Turkish exam preparation content
+            encounter. A version that adds many features I felt were missing.
           </div>
         );
       },
@@ -283,11 +283,18 @@ const projects: {
       title: "Exam App",
       content: () => {
         return (
-          <div>
+          <p>
             A question‑solving, tracking, level‑detection and reporting system
             designed for YKS students, together with complex PDF‑generation
             mechanisms.
-          </div>
+            <br />
+            <br />I wrote a custom layout engine (kind of an strech) for the
+            usual question flow between page colunms. <br />
+            <br />
+            Check out an example:
+            <br />
+            <a href="/assets/ornek-sinav.pdf">PDF</a>
+          </p>
         );
       },
     },
@@ -299,6 +306,15 @@ const projects: {
             Temelde YKS öğrencileri için tasarlanmış soru çözüm, takip, seviye
             tespit ve rapor sistemi. Kompleks PDF oluşturma mekanizmaları ile
             beraber
+            <br />
+            <br />
+            Alışık olduğumuz sütunlu sayfa düzeni için projeye özel düzen
+            motorumu yazdım.
+            <br />
+            <br />
+            Bir örneği inceleyin:
+            <br />
+            <a href="/assets/ornek-sinav.pdf">PDF</a>
           </div>
         );
       },

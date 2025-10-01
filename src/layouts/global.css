@@ -411,6 +411,10 @@
 		line-height: 1.6;
 	}
 
+	a {
+		@apply italic underline text-flexoki-blue-200;
+	}
+
 	[data-slot="dialog-overlay"] {
 		transition-duration: 200ms;
 		transition-delay: 300ms;
