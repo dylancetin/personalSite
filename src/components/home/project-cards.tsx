@@ -159,7 +159,10 @@ export function CardDialog({
           className="relative w-full h-full mx-auto rounded-lg bg-flexoki-base-50 overflow-hidden pointer-events-auto"
           layoutId={`card-container-${activeId}`}
         >
-          <ScrollArea className="h-full max-h-[calc(100vh-128px)]">
+          <ScrollArea
+            className="h-full max-h-[calc(100vh-128px)] [--color-border:var(--color-flexoki-blue-700)]"
+            type="auto"
+          >
             <DialogTitle hidden>{activeProject[locale].title}</DialogTitle>
             <motion.div
               className={`w-full ${

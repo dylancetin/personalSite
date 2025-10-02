@@ -412,7 +412,7 @@
 	}
 
 	a {
-		@apply italic underline text-flexoki-blue-200;
+		@apply italic underline text-flexoki-blue-200 hover:text-flexoki-blue-100 transition-colors duration-75 ease-in-out;
 	}
 
 	[data-slot="dialog-overlay"] {
