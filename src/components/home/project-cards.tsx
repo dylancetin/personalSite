@@ -3,7 +3,13 @@ import React, { useState } from "react";
 import { motion, MotionConfig } from "motion/react";
 import { ScrollArea, ScrollBar } from "../ui/scroll-area";
 import { Button } from "../ui/button";
-import { ExpandIcon, LinkIcon, ShrinkIcon, XIcon } from "lucide-react";
+import {
+  ExpandIcon,
+  LinkIcon,
+  MousePointerClickIcon,
+  ShrinkIcon,
+  XIcon,
+} from "lucide-react";
 import {
   Dialog,
   DialogContentWithoutAnimation,
@@ -17,8 +23,8 @@ export function ProjectCards() {
     <MotionConfig
       transition={{
         type: "tween",
-        duration: 0.45,
-        ease: [0.16, 1, 0.3, 1],
+        duration: 0.3,
+        ease: [0.25, 1, 0.5, 1],
       }}
     >
       <AnimatePresence>
@@ -51,7 +57,7 @@ function Card({
 }) {
   return (
     <div
-      className={`p-0 py-2 sm:p-2 w-full ${
+      className={`p-0 py-2 sm:p-2 w-full cursor-pointer group ${
         [
           "flex-1 sm:flex-1/3",
           "flex-1 sm:flex-2/3",
@@ -72,13 +78,17 @@ function Card({
             className="absolute top-0 left-0 max-w-none w-[calc(100vw-2rem)]"
             layoutId={`card-image-container-${id}`}
           >
-            <img
+            <motion.img
               className="object-cover object-top-left z-50 max-w-none w-[calc(100vw-2rem)] h-100 sm:h-80 md:h-120 bg-white"
               src={project.photo}
+              layoutId={`card-image-${id}`}
               alt=""
             />
           </motion.div>
         </motion.div>
+        <div className="absolute size-10 opacity-0 scale-85 blur-[2px] group-hover:opacity-100 group-hover:blur-none group-hover:scale-100 group-hover:transition-all duration-300 ease-in-out left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-flexoki-blue-600/90 rounded-full flex justify-center items-center">
+          <MousePointerClickIcon className="size-5" />
+        </div>
       </div>
     </div>
   );
@@ -97,7 +107,8 @@ export function CardDialog({
 
   return (
     <Dialog open onOpenChange={() => setActiveId(undefined)}>
-      <DialogContentWithoutAnimation className="w-full min-h-160 p-0 bg-transparent border-none focus-visible:outline-none text-black rounded-lg overflow-hidden">
+      <DialogContentWithoutAnimation className="w-full min-h-160 p-0 bg-transparent border-none focus-visible:outline-none text-black rounded-lg opacity-100">
+        <DialogTitle hidden>{activeProject[locale].title}</DialogTitle>
         <motion.div
           layout
           className="absolute top-3 right-3 h-12 z-50 flex gap-2 justify-end"
@@ -160,23 +171,23 @@ export function CardDialog({
           layoutId={`card-container-${activeId}`}
         >
           <ScrollArea
-            className="h-full max-h-[calc(100vh-128px)] [--color-border:var(--color-flexoki-blue-700)]"
+            className="h-full max-h-[calc(100vh-128px)] [--color-border:var(--color-flexoki-blue-700)] flex flex-col"
             type="auto"
           >
-            <DialogTitle hidden>{activeProject[locale].title}</DialogTitle>
             <motion.div
               className={`w-full ${
                 !scaleImage ? "h-100 sm:h-80 md:h-120" : "h-fit"
-              } overflow-hidden`}
+              } overflow-hidden z-30`}
               layoutId={`card-image-container-${activeId}`}
             >
-              <img
+              <motion.img
                 className="object-cover object-top-left z-50 max-w-none w-[calc(100vw-2rem)] h-100 sm:h-80 md:h-120"
                 src={activeProject.photo}
+                layoutId={`card-image-${activeId}`}
                 alt=""
               />
             </motion.div>
-            <motion.div className="pt-2 px-[35px] pb-[35px] max-w-[700px] w-[90vw] space-y-4">
+            <motion.div className="pt-2 px-[35px] pb-[35px] max-w-[700px] w-[90vw] space-y-4 z-20 flex-grow">
               <h3 className="font-semibold text-2xl">
                 {activeProject[locale].title}
               </h3>
