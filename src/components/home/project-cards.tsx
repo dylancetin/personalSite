@@ -35,6 +35,7 @@ export function ProjectCards() {
               id={i}
               setActiveId={setActiveId}
               project={e}
+              activeId={activeId}
             />
           ))}
         </div>
@@ -49,10 +50,12 @@ export function ProjectCards() {
 function Card({
   project,
   id,
+  activeId,
   setActiveId,
 }: {
   project: (typeof projects)[number];
   id: number;
+  activeId: number | undefined;
   setActiveId: React.Dispatch<React.SetStateAction<number | undefined>>;
 }) {
   return (
@@ -86,9 +89,11 @@ function Card({
             />
           </motion.div>
         </motion.div>
-        <div className="absolute size-10 opacity-0 scale-85 blur-[2px] group-hover:opacity-100 group-hover:blur-none group-hover:scale-100 group-hover:transition-all duration-300 ease-in-out left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-flexoki-blue-600/90 rounded-full flex justify-center items-center">
-          <MousePointerClickIcon className="size-5" />
-        </div>
+        {activeId !== id ? (
+          <div className="absolute size-10 opacity-100 scroll-animate-in animate-in blur-in-xs sm:opacity-0 sm:scale-85 sm:blur-[2px] group-hover:opacity-100 group-hover:blur-none group-hover:scale-100 group-hover:transition-all duration-300 ease-in-out left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 bg-flexoki-blue-600/90 rounded-full flex justify-center items-center">
+            <MousePointerClickIcon className="size-5" />
+          </div>
+        ) : null}
       </div>
     </div>
   );
