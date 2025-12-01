@@ -1,7 +1,6 @@
 ---
 import { ProjectCards } from "@/components/home/project-cards";
 import Layout from "../layouts/Layout.astro";
-import { CalComponent } from "@/components/home/cal";
 ---
 
 <Layout title="Taylan Çetin" locale="tr">
@@ -50,12 +49,6 @@ import { CalComponent } from "@/components/home/cal";
         Projeler / Web Sayfaları
       </h2>
       <ProjectCards client:load />
-    </div>
-    <div class="mt-12 w-full">
-      <h2 class="text-3xl font-semibold italic my-4 bg-flexoki-blue-400 w-fit">
-        Cal.com
-      </h2>
-      <CalComponent client:load />
     </div>
   </main>
 </Layout>
