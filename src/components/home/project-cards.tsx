@@ -307,6 +307,12 @@ const projects: {
             designed for YKS students, together with complex PDF‑generation
             mechanisms.
             <br />
+            <br />
+            From <a href="https://sinavapp.taylan.co">
+              {"sinavapp.taylan.co"}
+            </a>{" "}
+            you can solve & check out an live quiz
+            <br />
             <br />I wrote a custom layout engine (kind of an strech) for the
             usual question flow between page colunms. <br />
             <br />
@@ -327,6 +333,10 @@ const projects: {
             beraber
             <br />
             <br />
+            <a href="https://sinavapp.taylan.co">{"sinavapp.taylan.co"}</a>{" "}
+            üzerinden basit bir test sınavını yapabilirsiniz
+            <br />
+            <br />
             Alışık olduğumuz sütunlu sayfa düzeni için projeye özel düzen
             motorumu yazdım.
             <br />
@@ -339,6 +349,7 @@ const projects: {
       },
     },
     photo: "/images/sinav-app.webp",
+    url: "https://sinavapp.taylan.co",
   },
   {
     en: {
